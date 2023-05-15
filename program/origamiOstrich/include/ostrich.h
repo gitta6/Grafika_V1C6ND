@@ -9,13 +9,13 @@
 #include "camera.h"
 #include <stdbool.h>
 
-
 typedef struct Ostrich
 {
     GLuint texture_id;
     Model model;
     vec3 pos;
     vec3 speed;
+    vec3 rotation;
     bool forward;
     bool backward;
     bool left;
@@ -24,17 +24,17 @@ typedef struct Ostrich
 
 /**
  * Initialize the ostrich.
-*/
-void init_ostrich(Ostrich* ostrich);
+ */
+void init_ostrich(Ostrich *ostrich);
 
-void set_ostrich_pos(Ostrich* ostrich, vec3 newPos);
+void set_ostrich_pos(Ostrich *ostrich, vec3 newPos);
 
-void set_ostrich_speed(Ostrich* ostrich, double speed);
+void set_ostrich_speed(Ostrich *ostrich, double speed);
 
-void set_ostrich_side_speed(Ostrich* ostrich, double speed);
+void set_ostrich_side_speed(Ostrich *ostrich, double speed);
 
-void set_ostrich_vertical_speed(Ostrich* ostrich, double speed);
+void set_ostrich_vertical_speed(Ostrich *ostrich, double speed);
 
-void move_ostrich(Ostrich* ostrich, double time);
+void move_ostrich(Ostrich *ostrich, double time);
 
 #endif /*OSTRICH_H*/

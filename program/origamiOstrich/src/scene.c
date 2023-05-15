@@ -29,7 +29,7 @@ void init_scene(Scene *scene)
     set_lighting(scene->lightingLevel);
 
     glEnable(GL_FOG);
-    glFogf(GL_FOG_DENSITY, 0.10f); // köd lenne :(
+    glFogf(GL_FOG_DENSITY, 0.05f); 
 
     scene->showInstructions = false;
     scene->instructions_texture_id = load_texture("assets/textures/instructions.jpg");

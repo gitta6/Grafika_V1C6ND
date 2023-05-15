@@ -367,12 +367,15 @@ void handle_app_events(App *app)
             break;
         case SDL_MOUSEMOTION:
             SDL_GetMouseState(&x, &y);
+            if(app->scene.spectateMode)
+            {
             if (is_mouse_down)
             {
                 rotate_camera(&(app->camera), mouse_x - x, mouse_y - y);
             }
             mouse_x = x;
             mouse_y = y;
+            }
             break;
         case SDL_MOUSEBUTTONUP:
             is_mouse_down = false;
