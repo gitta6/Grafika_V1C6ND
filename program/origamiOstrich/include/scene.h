@@ -5,6 +5,7 @@
 #include <obj/model.h>
 #include "GL/gl.h"
 #include "ostrich.h"
+#include "labyrinth.h"
 #include "texture.h"
 #include <stdbool.h>
 #include <obj/load.h>
@@ -16,10 +17,8 @@ typedef struct Scene
 {
     Material material;
     Ostrich ostrich;
-    //Material ostrichMaterial;
-    //GLuint texture_id;
+    Labyrinth labyrinth;
     float lightingLevel;
-    //Model desert;
     GLuint desert_texture_id;
     bool showInstructions;
     GLuint instructions_texture_id;     //HELP
