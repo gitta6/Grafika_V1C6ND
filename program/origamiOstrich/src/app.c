@@ -109,7 +109,7 @@ void reshape(GLsizei width, GLsizei height)
     glFrustum(
         -.08, .08,
         -.06, .06,
-        .1, 10);
+        .1, 70);
 }
 
 void handle_app_events(App *app)
@@ -199,14 +199,14 @@ void handle_app_events(App *app)
                 app->scene.lightingLevel = 0.5f;
                 set_lighting(app->scene.lightingLevel);
                 glEnable(GL_FOG);
-                glFogf(GL_FOG_DENSITY, 0.5f);
+                glFogf(GL_FOG_DENSITY, 0.3f);
                 break;
             case SDL_SCANCODE_M: // day
                 set_day();
                 app->scene.lightingLevel = 3.0f;
                 set_lighting(app->scene.lightingLevel);
                 glEnable(GL_FOG);
-                glFogf(GL_FOG_DENSITY, 0.10f);
+                glFogf(GL_FOG_DENSITY, 0.02f);
                 break;
 
                 // o. movement (if it's separated from camera movement)
