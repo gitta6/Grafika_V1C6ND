@@ -142,48 +142,48 @@ void handle_app_events(App *app)
             case SDL_SCANCODE_W:
                 if (app->scene.spectateMode)
                 {
-                    set_camera_speed(&(app->camera), 3);
+                    set_camera_speed(&(app->camera), 6);
                 }
                 else
                 {
-                    set_camera_speed(&(app->camera), 3);
-                    set_ostrich_speed(&(app->scene.ostrich), 3);
+                    set_camera_speed(&(app->camera), 6);
+                    set_ostrich_speed(&(app->scene.ostrich), 6);
                     app->scene.ostrich.forward = true;
                 }
                 break;
             case SDL_SCANCODE_S:
                 if (app->scene.spectateMode)
                 {
-                    set_camera_speed(&(app->camera), -3);
+                    set_camera_speed(&(app->camera), -6);
                 }
                 else
                 {
-                    set_camera_speed(&(app->camera), -3);
-                    set_ostrich_speed(&(app->scene.ostrich), -3);
+                    set_camera_speed(&(app->camera), -6);
+                    set_ostrich_speed(&(app->scene.ostrich), -6);
                     app->scene.ostrich.backward = true;
                 }
                 break;
             case SDL_SCANCODE_A:
                 if (app->scene.spectateMode)
                 {
-                    set_camera_side_speed(&(app->camera), 3);
+                    set_camera_side_speed(&(app->camera), 6);
                 }
                 else
                 {
-                    set_camera_side_speed(&(app->camera), 3);
-                    set_ostrich_side_speed(&(app->scene.ostrich), 3);
+                    set_camera_side_speed(&(app->camera), 6);
+                    set_ostrich_side_speed(&(app->scene.ostrich), 6);
                     app->scene.ostrich.left = true;
                 }
                 break;
             case SDL_SCANCODE_D:
                 if (app->scene.spectateMode)
                 {
-                    set_camera_side_speed(&(app->camera), -3);
+                    set_camera_side_speed(&(app->camera), -6);
                 }
                 else
                 {
-                    set_camera_side_speed(&(app->camera), -3);
-                    set_ostrich_side_speed(&(app->scene.ostrich), -3);
+                    set_camera_side_speed(&(app->camera), -6);
+                    set_ostrich_side_speed(&(app->scene.ostrich), -6);
                     app->scene.ostrich.right = true;
                 }
 
@@ -199,7 +199,7 @@ void handle_app_events(App *app)
                 app->scene.lightingLevel = 0.5f;
                 set_lighting(app->scene.lightingLevel);
                 glEnable(GL_FOG);
-                glFogf(GL_FOG_DENSITY, 0.3f);
+                glFogf(GL_FOG_DENSITY, 0.5f);
                 break;
             case SDL_SCANCODE_M: // day
                 set_day();

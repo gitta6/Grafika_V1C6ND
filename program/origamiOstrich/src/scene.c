@@ -150,7 +150,7 @@ void draw_desert(const Scene *scene)
     glBindTexture(GL_TEXTURE_2D, scene->desert_texture_id);
     glBegin(GL_QUADS);
     glPushMatrix();
-    for (int i = -100; i < 30; i++)
+    for (int i = -100; i < 100; i++)
     {
         {
             for (int j = -100; j <= 100; j++)
@@ -188,9 +188,10 @@ void draw_labyrinth(const Scene *scene)
     glBindTexture(GL_TEXTURE_2D, scene->labyrinth.labyrinth_texture_id);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glColor4f(1.0, 1.0, 1.0, 0.7);
-    glScalef(8.0, 8.0, 8.0);
+    glColor4f(0.9, 0.9, 0.9, 0.95);
+    glScalef(3.0, 3.0, 3.0);
     glRotatef(90, 1, 0, 0);
+    glRotatef(270, 0, 1, 0);
     draw_model(&(scene->labyrinth.model));
     glDisable(GL_BLEND);
     glPopMatrix();
