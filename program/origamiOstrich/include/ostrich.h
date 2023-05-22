@@ -37,4 +37,10 @@ void set_ostrich_vertical_speed(Ostrich *ostrich, double speed);
 
 void move_ostrich(Ostrich *ostrich, double time);
 
+void rotate_ostrich(Ostrich *ostrich, double horizontal);
+
+void rotate_ostrich_right(Ostrich *ostrich);
+
+void rotate_ostrich_left(Ostrich *ostrich);
+
 #endif /*OSTRICH_H*/

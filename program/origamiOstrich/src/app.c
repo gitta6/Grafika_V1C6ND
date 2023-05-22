@@ -1,4 +1,5 @@
 #include "app.h"
+#include "ostrich.h"
 
 #include <SDL2/SDL_image.h>
 
@@ -170,6 +171,7 @@ void handle_app_events(App *app)
                 }
                 else
                 {
+                    //rotate_ostrich(&(app->scene.ostrich), 90);
                     set_camera_side_speed(&(app->camera), 6);
                     set_ostrich_side_speed(&(app->scene.ostrich), 6);
                     app->scene.ostrich.left = true;
@@ -182,12 +184,43 @@ void handle_app_events(App *app)
                 }
                 else
                 {
+                    //rotate_ostrich(&(app->scene.ostrich), -90);
                     set_camera_side_speed(&(app->camera), -6);
                     set_ostrich_side_speed(&(app->scene.ostrich), -6);
                     app->scene.ostrich.right = true;
                 }
-
                 break;
+
+                //rotate right
+                 case SDL_SCANCODE_RIGHT:
+                if (app->scene.spectateMode)
+                {
+                    set_camera_side_speed(&(app->camera), -6);
+                }
+                else
+                {
+                    rotate_ostrich(&(app->scene.ostrich), -90);
+                    /*set_camera_side_speed(&(app->camera), -6);
+                    set_ostrich_side_speed(&(app->scene.ostrich), -6);
+                    app->scene.ostrich.right = true;*/
+                }
+                break;
+
+                //rotate left
+                 case SDL_SCANCODE_LEFT:
+                if (app->scene.spectateMode)
+                {
+                    set_camera_side_speed(&(app->camera), -6);
+                }
+                else
+                {
+                    rotate_ostrich(&(app->scene.ostrich), 90);
+                    /*set_camera_side_speed(&(app->camera), -6);
+                    set_ostrich_side_speed(&(app->scene.ostrich), -6);
+                    app->scene.ostrich.right = true;*/
+                }
+                break;
+
             case SDL_SCANCODE_Q:
                 app->camera.speed.z = 3;
                 break;
@@ -199,7 +232,7 @@ void handle_app_events(App *app)
                 app->scene.lightingLevel = 0.5f;
                 set_lighting(app->scene.lightingLevel);
                 glEnable(GL_FOG);
-                glFogf(GL_FOG_DENSITY, 0.5f);
+                glFogf(GL_FOG_DENSITY, 0.3f);
                 break;
             case SDL_SCANCODE_M: // day
                 set_day();
@@ -367,15 +400,15 @@ void handle_app_events(App *app)
             break;
         case SDL_MOUSEMOTION:
             SDL_GetMouseState(&x, &y);
-            if(app->scene.spectateMode)
-            {
             if (is_mouse_down)
             {
-                rotate_camera(&(app->camera), mouse_x - x, mouse_y - y);
+                if (app->scene.spectateMode)
+                {
+                    rotate_camera(&(app->camera), mouse_x - x, mouse_y - y);
+                }
             }
             mouse_x = x;
             mouse_y = y;
-            }
             break;
         case SDL_MOUSEBUTTONUP:
             is_mouse_down = false;

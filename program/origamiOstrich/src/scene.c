@@ -176,8 +176,10 @@ void draw_desert(const Scene *scene)
 void draw_ostrich(const Scene *scene)
 {
     glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, scene->ostrich.texture_id);
     glScalef(0.1, 0.1, 0.1);
     glRotatef(90, 1, 0, 0);
+    glRotatef(scene->ostrich.rotation.y, 0, 1, 0);
     draw_model(&(scene->ostrich.model));
     glPopMatrix();
 }
