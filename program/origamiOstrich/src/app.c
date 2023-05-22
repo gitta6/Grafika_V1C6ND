@@ -241,27 +241,10 @@ void handle_app_events(App *app)
                 glEnable(GL_FOG);
                 glFogf(GL_FOG_DENSITY, 0.02f);
                 break;
+            case SDL_SCANCODE_K: //pozicio
+                printf("%f, %f, %f \n", app->camera.position.x, app->camera.position.y, app->camera.position.z);
+                break;
 
-                // o. movement (if it's separated from camera movement)
-                /*
-                case SDL_SCANCODE_UP:
-                    set_ostrich_speed(&(app->scene.ostrich), 3);
-                    app->scene.ostrich.forward = true;
-                    break;
-                case SDL_SCANCODE_DOWN:
-                    set_ostrich_speed(&(app->scene.ostrich), -3);
-                    app->scene.ostrich.backward = true;
-                    break;
-                case SDL_SCANCODE_LEFT:
-                    set_ostrich_side_speed(&(app->scene.ostrich), 3);
-                    app->scene.ostrich.left = true;
-                    break;
-                case SDL_SCANCODE_RIGHT:
-                    set_ostrich_side_speed(&(app->scene.ostrich), -3);
-                    app->scene.ostrich.right = true;
-                    break;
-                    */
-                // end of o. movement
             case SDL_SCANCODE_F5:
                 if (app->scene.spectateMode)
                 {
