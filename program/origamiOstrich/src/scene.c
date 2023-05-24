@@ -34,6 +34,11 @@ void init_scene(Scene *scene)
     scene->showInstructions = false;
     scene->instructions_texture_id = load_texture("assets/textures/instructions.jpg");
 
+    /*
+    scene->showWinScene = false;
+    scene->instructions_texture_id = load_texture(" ");
+    */
+
     scene->spectateMode = false;
 }
 
@@ -112,6 +117,7 @@ void render_scene(const Scene *scene)
     glEnable(GL_LIGHTING);
     glPopMatrix();
 
+    glPushMatrix();
     glDisable(GL_LIGHTING);
     if (scene->showInstructions)
     {
@@ -119,6 +125,18 @@ void render_scene(const Scene *scene)
     }
     glEnable(GL_LIGHTING);
     glPopMatrix();
+
+    // win scene
+    /*
+    glPushMatrix();
+    glDisable(GL_LIGHTING);
+    if (scene->showWinScene)
+    {
+        win_scene(scene->instructions_texture_id);
+    }
+    glEnable(GL_LIGHTING);
+    glPopMatrix();
+    */
 }
 
 void instructions(GLuint texture)
@@ -144,6 +162,32 @@ void instructions(GLuint texture)
 
     glEnable(GL_DEPTH_TEST);
 }
+
+/*
+void win_scene(GLuint texture)
+{
+    glDisable(GL_DEPTH_TEST);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+    glColor3f(1, 1, 1);
+    glBindTexture(GL_TEXTURE_2D, texture);
+
+    glBegin(GL_QUADS);
+    glTexCoord2f(0, 0);
+    glVertex3d(-2, 1.5, -3);
+    glTexCoord2f(1, 0);
+    glVertex3d(2, 1.5, -3);
+    glTexCoord2f(1, 1);
+    glVertex3d(2, -1.5, -3);
+    glTexCoord2f(0, 1);
+    glVertex3d(-2, -1.5, -3);
+    glEnd();
+
+    glEnable(GL_DEPTH_TEST);
+}
+*/
 
 void draw_desert(const Scene *scene)
 {

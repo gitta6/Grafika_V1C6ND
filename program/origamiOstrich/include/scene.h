@@ -21,6 +21,7 @@ typedef struct Scene
     float lightingLevel;
     GLuint desert_texture_id;
     bool showInstructions;
+    bool showWinScene;
     GLuint instructions_texture_id;     //HELP
     bool spectateMode;
 } Scene;
@@ -60,6 +61,10 @@ void draw_ostrich(const Scene* scene);
 /*
 * Show instructions.
 */
-void instructions(GLuint texture);           //HELP
+void instructions(GLuint texture);
+
+/*
+void win_scene(GLuint texture);
+*/
 
 #endif /* SCENE_H */

@@ -132,15 +132,15 @@ void handle_app_events(App *app)
             case SDL_SCANCODE_ESCAPE:
                 app->is_running = false;
                 break;
-            case SDL_SCANCODE_KP_PLUS: // fényerő fel
+            case SDL_SCANCODE_KP_PLUS: // lighting level up
                 app->scene.lightingLevel += 0.2f;
                 set_lighting(app->scene.lightingLevel);
                 break;
-            case SDL_SCANCODE_KP_MINUS: // fényerő le
+            case SDL_SCANCODE_KP_MINUS: // lighting level down
                 app->scene.lightingLevel -= 0.2f;
                 set_lighting(app->scene.lightingLevel);
                 break;
-            case SDL_SCANCODE_W:
+            case SDL_SCANCODE_W: // forward
                 if (app->scene.spectateMode)
                 {
                     set_camera_speed(&(app->camera), 6);
@@ -152,7 +152,7 @@ void handle_app_events(App *app)
                     app->scene.ostrich.forward = true;
                 }
                 break;
-            case SDL_SCANCODE_S:
+            case SDL_SCANCODE_S: // backward
                 if (app->scene.spectateMode)
                 {
                     set_camera_speed(&(app->camera), -6);
@@ -164,67 +164,67 @@ void handle_app_events(App *app)
                     app->scene.ostrich.backward = true;
                 }
                 break;
-            case SDL_SCANCODE_A:
+            case SDL_SCANCODE_A: // left
                 if (app->scene.spectateMode)
                 {
                     set_camera_side_speed(&(app->camera), 6);
                 }
                 else
                 {
-                    //rotate_ostrich(&(app->scene.ostrich), 90);
+                    // rotate_ostrich(&(app->scene.ostrich), 90);
                     set_camera_side_speed(&(app->camera), 6);
                     set_ostrich_side_speed(&(app->scene.ostrich), 6);
                     app->scene.ostrich.left = true;
                 }
                 break;
-            case SDL_SCANCODE_D:
+            case SDL_SCANCODE_D: // right
                 if (app->scene.spectateMode)
                 {
                     set_camera_side_speed(&(app->camera), -6);
                 }
                 else
                 {
-                    //rotate_ostrich(&(app->scene.ostrich), -90);
+                    // rotate_ostrich(&(app->scene.ostrich), -90);
                     set_camera_side_speed(&(app->camera), -6);
                     set_ostrich_side_speed(&(app->scene.ostrich), -6);
                     app->scene.ostrich.right = true;
                 }
                 break;
 
-                //rotate right
-                 case SDL_SCANCODE_RIGHT:
+                // rotate right
+            case SDL_SCANCODE_RIGHT:
                 if (app->scene.spectateMode)
                 {
                     set_camera_side_speed(&(app->camera), -6);
                 }
                 else
                 {
-                    rotate_ostrich(&(app->scene.ostrich), -90);
+                    rotate_ostrich(&(app->scene.ostrich), -30);
                     /*set_camera_side_speed(&(app->camera), -6);
                     set_ostrich_side_speed(&(app->scene.ostrich), -6);
                     app->scene.ostrich.right = true;*/
                 }
                 break;
 
-                //rotate left
-                 case SDL_SCANCODE_LEFT:
+                // rotate left
+            case SDL_SCANCODE_LEFT:
                 if (app->scene.spectateMode)
                 {
                     set_camera_side_speed(&(app->camera), -6);
                 }
                 else
                 {
-                    rotate_ostrich(&(app->scene.ostrich), 90);
+                    rotate_ostrich(&(app->scene.ostrich), 30);
                     /*set_camera_side_speed(&(app->camera), -6);
                     set_ostrich_side_speed(&(app->scene.ostrich), -6);
                     app->scene.ostrich.right = true;*/
                 }
                 break;
 
-            case SDL_SCANCODE_Q:
+            case SDL_SCANCODE_Q: // up
                 app->camera.speed.z = 3;
                 break;
-            case SDL_SCANCODE_E:
+            case SDL_SCANCODE_E: // down
                 app->camera.speed.z = -3;
                 break;
             case SDL_SCANCODE_N: // night
@@ -241,11 +241,11 @@ void handle_app_events(App *app)
                 glEnable(GL_FOG);
                 glFogf(GL_FOG_DENSITY, 0.02f);
                 break;
-            case SDL_SCANCODE_K: //pozicio
+            case SDL_SCANCODE_K: // position
                 printf("%f, %f, %f \n", app->camera.position.x, app->camera.position.y, app->camera.position.z);
                 break;
 
-            case SDL_SCANCODE_F5:
+            case SDL_SCANCODE_F5: // spectate mode
                 if (app->scene.spectateMode)
                 {
                     app->scene.spectateMode = false;
@@ -257,8 +257,8 @@ void handle_app_events(App *app)
                 break;
                 break;
 
-            case SDL_SCANCODE_F1:
-                if (app->scene.showInstructions) // instructions
+            case SDL_SCANCODE_F1: // instructions
+                if (app->scene.showInstructions)
                 {
                     app->scene.showInstructions = false;
                     glFrustum(

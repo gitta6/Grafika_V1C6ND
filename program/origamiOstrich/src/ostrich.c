@@ -17,9 +17,10 @@ void init_ostrich(Ostrich *ostrich)
     ostrich->forward = false;
     ostrich->backward = false;
 
-    ostrich->rotation.x= 0.0;
-    ostrich->rotation.y= 0.0;
-    ostrich->rotation.z= 0.0;
+    ostrich->rotation.x = 0.0;
+    ostrich->rotation.y = 0.0;
+    ostrich->rotation.z = 0.0;
+
     ostrich->left = false;
     ostrich->right = false;
 }
@@ -77,4 +78,3 @@ void rotate_ostrich(Ostrich *ostrich, double horizontal)
         ostrich->rotation.x -= 360.0;
     }
 }
-
