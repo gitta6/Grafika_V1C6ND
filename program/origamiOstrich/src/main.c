@@ -17,10 +17,6 @@ int main(int argc, char *argv[])
         update_app(&app);
         render_app(&app);
     }
-
-    // Model model;
-    // load_model(&model, "./assets/models/origamiOstrich.obj");
-    // print_model_info(&model);
     destroy_app(&app);
 
     return 0;

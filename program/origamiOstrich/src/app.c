@@ -143,7 +143,7 @@ void handle_app_events(App *app)
             case SDL_SCANCODE_W: // forward
                 if (app->scene.spectateMode)
                 {
-                    set_camera_speed(&(app->camera), 6);
+                    set_camera_speed(&(app->camera), 15);
                 }
                 else
                 {
@@ -155,7 +155,7 @@ void handle_app_events(App *app)
             case SDL_SCANCODE_S: // backward
                 if (app->scene.spectateMode)
                 {
-                    set_camera_speed(&(app->camera), -6);
+                    set_camera_speed(&(app->camera), -15);
                 }
                 else
                 {
@@ -167,7 +167,7 @@ void handle_app_events(App *app)
             case SDL_SCANCODE_A: // left
                 if (app->scene.spectateMode)
                 {
-                    set_camera_side_speed(&(app->camera), 6);
+                    set_camera_side_speed(&(app->camera), 15);
                 }
                 else
                 {
@@ -180,7 +180,7 @@ void handle_app_events(App *app)
             case SDL_SCANCODE_D: // right
                 if (app->scene.spectateMode)
                 {
-                    set_camera_side_speed(&(app->camera), -6);
+                    set_camera_side_speed(&(app->camera), -15);
                 }
                 else
                 {
@@ -339,39 +339,6 @@ void handle_app_events(App *app)
                     app->scene.ostrich.right = false;
                 }
                 break;
-
-                // ostrich movement (if it's separated from camera movement)
-                /*
-            case SDL_SCANCODE_UP:
-                set_ostrich_speed(&(app->scene.ostrich), 0);
-                app->scene.ostrich.forward = false;
-                app->scene.ostrich.backward = false;
-                app->scene.ostrich.left = false;
-                app->scene.ostrich.right = false;
-                break;
-            case SDL_SCANCODE_RIGHT:
-                set_ostrich_side_speed(&(app->scene.ostrich), 0);
-                app->scene.ostrich.forward = false;
-                app->scene.ostrich.backward = false;
-                app->scene.ostrich.left = false;
-                app->scene.ostrich.right = false;
-                break;
-            case SDL_SCANCODE_DOWN:
-                set_ostrich_speed(&(app->scene.ostrich), 0);
-                app->scene.ostrich.forward = false;
-                app->scene.ostrich.backward = false;
-                app->scene.ostrich.left = false;
-                app->scene.ostrich.right = false;
-                break;
-            case SDL_SCANCODE_LEFT:
-                set_ostrich_side_speed(&(app->scene.ostrich), 0);
-                app->scene.ostrich.forward = false;
-                app->scene.ostrich.backward = false;
-                app->scene.ostrich.left = false;
-                app->scene.ostrich.right = false;
-                break;
-            */
-                // end of ostrich movement
             default:
                 app->camera.speed.z = 0;
                 break;
@@ -417,6 +384,7 @@ void update_app(App *app)
     update_camera(&(app->camera), elapsed_time);
     update_scene(&(app->scene));
     move_ostrich(&(app->scene.ostrich), elapsed_time);
+    //levitate_you_won(&(app->scene.youWon));
 }
 
 void render_app(App *app)

@@ -17,7 +17,7 @@ typedef struct Labyrinth
 } Labyrinth;
 
 /**
- * Initialize the ostrich.
+ * Initialize the labyrinth. 
  */
 void init_labyrinth(Labyrinth *labyrinth);
 

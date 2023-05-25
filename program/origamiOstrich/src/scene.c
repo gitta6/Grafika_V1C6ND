@@ -1,6 +1,7 @@
 #include "scene.h"
 #include "labyrinth.h"
 #include "ostrich.h"
+#include "you_won.h"
 #include <GL/gl.h>
 #include <obj/load.h>
 #include <obj/draw.h>
@@ -10,6 +11,7 @@ void init_scene(Scene *scene)
     scene->desert_texture_id = load_texture("./assets/textures/sand2.jpg");
     init_ostrich(&(scene->ostrich));
     init_labyrinth(&(scene->labyrinth));
+    init_you_won(&(scene->youWon));
 
     scene->material.ambient.red = 0.0;
     scene->material.ambient.green = 0.0;
@@ -85,30 +87,37 @@ void update_scene(Scene *scene)
     {
         scene->ostrich.pos.z += 0.09;
     }
+    /*
+    if (scene->youWon.pos.z <= 4)
+    {
+        scene->youWon.speed.z = 3;
+    }
+    else if (scene->youWon.pos.z > 4)
+    {
+        scene->youWon.speed.z = -3;
+    }
+    */
 }
 
 void render_scene(const Scene *scene)
 {
-    // glDisable(GL_LIGHTING);
-
+    // desert
     set_lighting(scene->lightingLevel);
     set_material(&(scene->material));
-    // glDisable(GL_TEXTURE);
     glPushMatrix();
     glDisable(GL_LIGHTING);
     draw_desert(scene);
     glEnable(GL_LIGHTING);
     glPopMatrix();
-    // glEnable(GL_TEXTURE);
 
-    // glDisable(GL_TEXTURE);
+    // ostrich
     glPushMatrix();
     glTranslatef(scene->ostrich.pos.x, scene->ostrich.pos.y, scene->ostrich.pos.z);
     glVertex3f(scene->ostrich.pos.x, scene->ostrich.pos.y, scene->ostrich.pos.z);
     draw_ostrich(scene);
     glPopMatrix();
-    // glEnable(GL_TEXTURE);
 
+    // labyrinth
     glPushMatrix();
     glDisable(GL_TEXTURE);
     glDisable(GL_LIGHTING);
@@ -117,6 +126,7 @@ void render_scene(const Scene *scene)
     glEnable(GL_LIGHTING);
     glPopMatrix();
 
+    // instructions
     glPushMatrix();
     glDisable(GL_LIGHTING);
     if (scene->showInstructions)
@@ -137,6 +147,15 @@ void render_scene(const Scene *scene)
     glEnable(GL_LIGHTING);
     glPopMatrix();
     */
+
+    // star
+    // glPushMatrix();
+    // glDisable(GL_TEXTURE);
+    // glDisable(GL_LIGHTING);
+    draw_you_won(scene);
+    // glEnable(GL_TEXTURE);
+    // glEnable(GL_LIGHTING);
+    // glPopMatrix();
 }
 
 void instructions(GLuint texture)
@@ -234,11 +253,24 @@ void draw_labyrinth(const Scene *scene)
     glBindTexture(GL_TEXTURE_2D, scene->labyrinth.labyrinth_texture_id);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glColor4f(0.9, 0.9, 0.9, 0.95);
+    glColor4f(1.0, 1.0, 1.0, 0.75);
     glScalef(3.0, 3.0, 3.0);
     glRotatef(90, 1, 0, 0);
     glRotatef(270, 0, 1, 0);
     draw_model(&(scene->labyrinth.model));
     glDisable(GL_BLEND);
+    glPopMatrix();
+}
+
+void draw_you_won(const Scene *scene)
+{
+    glPushMatrix();
+    glTranslatef(75.5, -14.6, 2.0);
+    glBindTexture(GL_TEXTURE_2D, scene->youWon.you_won_texture_id);
+    glScalef(0.4, 0.4, 0.4);
+    glRotatef(-90, 1, 0, 0);
+    glRotatef(90, 0, 1, 0);
+    glRotatef(180, 0, 0, 1);
+    draw_model(&(scene->youWon.model));
     glPopMatrix();
 }

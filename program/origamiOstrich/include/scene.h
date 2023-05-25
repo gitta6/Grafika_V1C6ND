@@ -6,6 +6,7 @@
 #include "GL/gl.h"
 #include "ostrich.h"
 #include "labyrinth.h"
+#include "you_won.h"
 #include "texture.h"
 #include <stdbool.h>
 #include <obj/load.h>
@@ -24,6 +25,7 @@ typedef struct Scene
     bool showWinScene;
     GLuint instructions_texture_id;     //HELP
     bool spectateMode;
+    YouWon youWon;
 } Scene;
 
 /**
@@ -66,5 +68,11 @@ void instructions(GLuint texture);
 /*
 void win_scene(GLuint texture);
 */
+
+/*
+* Draw you_won.
+*/
+
+void draw_you_won(const Scene* scene);
 
 #endif /* SCENE_H */
