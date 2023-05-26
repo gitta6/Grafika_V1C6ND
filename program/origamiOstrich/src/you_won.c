@@ -79,14 +79,8 @@ void rotate_you_won(YouWon *youWon, double horizontal)
 
 void levitate_you_won(YouWon *youWon)
 {
-    /*
-    if (youWon->pos.z<=4)
-    {
-        youWon->speed.z=3;
-    }
-    else if (youWon->pos.z>4)
-    {
-        youWon->speed.z=-3;
-    }
-    */
+    double current_time = (double)SDL_GetTicks() / 1000;
+    printf("%lf\n", current_time);
+    youWon->pos.z = sin(current_time) / 2;
+    youWon->rotation.y += current_time / 30;
 }

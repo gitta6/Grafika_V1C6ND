@@ -265,12 +265,13 @@ void draw_labyrinth(const Scene *scene)
 void draw_you_won(const Scene *scene)
 {
     glPushMatrix();
-    glTranslatef(75.5, -14.6, 2.0);
+    glTranslatef(75.5, -14.6, scene->youWon.pos.z);
     glBindTexture(GL_TEXTURE_2D, scene->youWon.you_won_texture_id);
     glScalef(0.4, 0.4, 0.4);
     glRotatef(-90, 1, 0, 0);
     glRotatef(90, 0, 1, 0);
     glRotatef(180, 0, 0, 1);
+    glRotatef(scene->youWon.rotation.y, 0, 1, 0);
     draw_model(&(scene->youWon.model));
     glPopMatrix();
 }

@@ -384,7 +384,7 @@ void update_app(App *app)
     update_camera(&(app->camera), elapsed_time);
     update_scene(&(app->scene));
     move_ostrich(&(app->scene.ostrich), elapsed_time);
-    //levitate_you_won(&(app->scene.youWon));
+    levitate_you_won(&(app->scene.youWon));
 }
 
 void render_app(App *app)
