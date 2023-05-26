@@ -36,11 +36,6 @@ void init_scene(Scene *scene)
     scene->showInstructions = false;
     scene->instructions_texture_id = load_texture("assets/textures/instructions.jpg");
 
-    /*
-    scene->showWinScene = false;
-    scene->instructions_texture_id = load_texture(" ");
-    */
-
     scene->spectateMode = false;
 }
 
@@ -87,16 +82,6 @@ void update_scene(Scene *scene)
     {
         scene->ostrich.pos.z += 0.09;
     }
-    /*
-    if (scene->youWon.pos.z <= 4)
-    {
-        scene->youWon.speed.z = 3;
-    }
-    else if (scene->youWon.pos.z > 4)
-    {
-        scene->youWon.speed.z = -3;
-    }
-    */
 }
 
 void render_scene(const Scene *scene)
@@ -119,10 +104,8 @@ void render_scene(const Scene *scene)
 
     // labyrinth
     glPushMatrix();
-    glDisable(GL_TEXTURE);
     glDisable(GL_LIGHTING);
     draw_labyrinth(scene);
-    glEnable(GL_TEXTURE);
     glEnable(GL_LIGHTING);
     glPopMatrix();
 
@@ -136,26 +119,8 @@ void render_scene(const Scene *scene)
     glEnable(GL_LIGHTING);
     glPopMatrix();
 
-    // win scene
-    /*
-    glPushMatrix();
-    glDisable(GL_LIGHTING);
-    if (scene->showWinScene)
-    {
-        win_scene(scene->instructions_texture_id);
-    }
-    glEnable(GL_LIGHTING);
-    glPopMatrix();
-    */
-
-    // star
-    // glPushMatrix();
-    // glDisable(GL_TEXTURE);
-    // glDisable(GL_LIGHTING);
+    // you won object
     draw_you_won(scene);
-    // glEnable(GL_TEXTURE);
-    // glEnable(GL_LIGHTING);
-    // glPopMatrix();
 }
 
 void instructions(GLuint texture)
@@ -182,41 +147,15 @@ void instructions(GLuint texture)
     glEnable(GL_DEPTH_TEST);
 }
 
-/*
-void win_scene(GLuint texture)
-{
-    glDisable(GL_DEPTH_TEST);
-
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-
-    glColor3f(1, 1, 1);
-    glBindTexture(GL_TEXTURE_2D, texture);
-
-    glBegin(GL_QUADS);
-    glTexCoord2f(0, 0);
-    glVertex3d(-2, 1.5, -3);
-    glTexCoord2f(1, 0);
-    glVertex3d(2, 1.5, -3);
-    glTexCoord2f(1, 1);
-    glVertex3d(2, -1.5, -3);
-    glTexCoord2f(0, 1);
-    glVertex3d(-2, -1.5, -3);
-    glEnd();
-
-    glEnable(GL_DEPTH_TEST);
-}
-*/
-
 void draw_desert(const Scene *scene)
 {
     glBindTexture(GL_TEXTURE_2D, scene->desert_texture_id);
     glBegin(GL_QUADS);
     glPushMatrix();
-    for (int i = -100; i < 100; i++)
+    for (int i = -150; i < 150; i++)
     {
         {
-            for (int j = -100; j <= 100; j++)
+            for (int j = -150; j <= 150; j++)
             {
                 glTexCoord2f(0, 1);
                 glVertex3f(j, i, 0);
@@ -250,7 +189,6 @@ void draw_ostrich(const Scene *scene)
 void draw_labyrinth(const Scene *scene)
 {
     glPushMatrix();
-    glBindTexture(GL_TEXTURE_2D, scene->labyrinth.labyrinth_texture_id);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glColor4f(1.0, 1.0, 1.0, 0.75);
@@ -266,7 +204,6 @@ void draw_you_won(const Scene *scene)
 {
     glPushMatrix();
     glTranslatef(75.5, -14.6, scene->youWon.pos.z);
-    glBindTexture(GL_TEXTURE_2D, scene->youWon.you_won_texture_id);
     glScalef(0.4, 0.4, 0.4);
     glRotatef(-90, 1, 0, 0);
     glRotatef(90, 0, 1, 0);

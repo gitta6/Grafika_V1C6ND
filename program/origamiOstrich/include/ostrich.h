@@ -16,7 +16,6 @@ typedef struct Ostrich
     vec3 pos;
     vec3 speed;
     vec3 rotation;
-    vec3 rotationSpeed;
     bool forward;
     bool backward;
     bool left;
@@ -28,16 +27,34 @@ typedef struct Ostrich
  */
 void init_ostrich(Ostrich *ostrich);
 
+/**
+ * Set the position of the ostrich.
+ */
 void set_ostrich_pos(Ostrich *ostrich, vec3 newPos);
 
+/**
+ * Set the speed of the ostrich.
+ */
 void set_ostrich_speed(Ostrich *ostrich, double speed);
 
+/**
+ * Set the side speed of the ostrich.
+ */
 void set_ostrich_side_speed(Ostrich *ostrich, double speed);
 
+/**
+ * Set the vertical speed of the ostrich.
+ */
 void set_ostrich_vertical_speed(Ostrich *ostrich, double speed);
 
+/**
+ * Move the ostrich.
+ */
 void move_ostrich(Ostrich *ostrich, double time);
 
+/**
+ * Rotate the ostrich.
+ */
 void rotate_ostrich(Ostrich *ostrich, double horizontal);
 
 #endif /*OSTRICH_H*/

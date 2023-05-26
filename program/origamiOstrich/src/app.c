@@ -129,7 +129,7 @@ void handle_app_events(App *app)
         case SDL_KEYDOWN:
             switch (event.key.keysym.scancode)
             {
-            case SDL_SCANCODE_ESCAPE:
+            case SDL_SCANCODE_ESCAPE: // quit game
                 app->is_running = false;
                 break;
             case SDL_SCANCODE_KP_PLUS: // lighting level up
@@ -171,7 +171,6 @@ void handle_app_events(App *app)
                 }
                 else
                 {
-                    // rotate_ostrich(&(app->scene.ostrich), 90);
                     set_camera_side_speed(&(app->camera), 6);
                     set_ostrich_side_speed(&(app->scene.ostrich), 6);
                     app->scene.ostrich.left = true;
@@ -184,15 +183,12 @@ void handle_app_events(App *app)
                 }
                 else
                 {
-                    // rotate_ostrich(&(app->scene.ostrich), -90);
                     set_camera_side_speed(&(app->camera), -6);
                     set_ostrich_side_speed(&(app->scene.ostrich), -6);
                     app->scene.ostrich.right = true;
                 }
                 break;
-
-                // rotate right
-            case SDL_SCANCODE_RIGHT:
+            case SDL_SCANCODE_RIGHT: // rotate right
                 if (app->scene.spectateMode)
                 {
                     set_camera_side_speed(&(app->camera), -6);
@@ -200,14 +196,10 @@ void handle_app_events(App *app)
                 else
                 {
                     rotate_ostrich(&(app->scene.ostrich), -30);
-                    /*set_camera_side_speed(&(app->camera), -6);
-                    set_ostrich_side_speed(&(app->scene.ostrich), -6);
-                    app->scene.ostrich.right = true;*/
                 }
                 break;
 
-                // rotate left
-            case SDL_SCANCODE_LEFT:
+            case SDL_SCANCODE_LEFT: // rotate left
                 if (app->scene.spectateMode)
                 {
                     set_camera_side_speed(&(app->camera), -6);
@@ -215,33 +207,30 @@ void handle_app_events(App *app)
                 else
                 {
                     rotate_ostrich(&(app->scene.ostrich), 30);
-                    /*set_camera_side_speed(&(app->camera), -6);
-                    set_ostrich_side_speed(&(app->scene.ostrich), -6);
-                    app->scene.ostrich.right = true;*/
                 }
                 break;
 
-            case SDL_SCANCODE_Q: // up
+            case SDL_SCANCODE_Q: // vertically up
                 app->camera.speed.z = 3;
                 break;
-            case SDL_SCANCODE_E: // down
+            case SDL_SCANCODE_E: // verically down
                 app->camera.speed.z = -3;
                 break;
-            case SDL_SCANCODE_N: // night
+            case SDL_SCANCODE_N: // night mode
                 set_night();
                 app->scene.lightingLevel = 0.5f;
                 set_lighting(app->scene.lightingLevel);
                 glEnable(GL_FOG);
                 glFogf(GL_FOG_DENSITY, 0.3f);
                 break;
-            case SDL_SCANCODE_M: // day
+            case SDL_SCANCODE_M: // day mode
                 set_day();
-                app->scene.lightingLevel = 3.0f;
+                app->scene.lightingLevel = 1.5f;
                 set_lighting(app->scene.lightingLevel);
                 glEnable(GL_FOG);
                 glFogf(GL_FOG_DENSITY, 0.02f);
                 break;
-            case SDL_SCANCODE_K: // position
+            case SDL_SCANCODE_K: // get position
                 printf("%f, %f, %f \n", app->camera.position.x, app->camera.position.y, app->camera.position.z);
                 break;
 

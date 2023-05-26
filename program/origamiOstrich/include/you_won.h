@@ -13,36 +13,17 @@ typedef struct YouWon
 {
     Model model;
     vec3 pos;
-    GLuint you_won_texture_id;
     vec3 rotation;
-    vec3 rotationSpeed;
-    vec3 speed;
-    bool forward;
-    bool backward;
-    bool left;
-    bool right;
 } YouWon;
 
 /**
- * Initialize the "you won" text.
+ * Initialize the "you won" object.
  */
 void init_you_won(YouWon *youWon);
 
-/*
-* Set the position of the "you won" text.
-*/
-void set_you_won_pos(YouWon *youWon, vec3 newPos);
-
-void set_you_won_speed(YouWon *youWon, double speed);
-
-void set_you_won_side_speed(YouWon *youWon, double speed);
-
-void set_you_won_vertical_speed(YouWon *youWon, double speed);
-
-void move_you_won(YouWon *youWon, double time);
-
-void rotate_you_won(YouWon *youWon, double horizontal);
-
+/**
+ * Levitate the "you won" object.
+ */
 void levitate_you_won(YouWon *youWon);
 
 #endif /*YOU_WON_H*/

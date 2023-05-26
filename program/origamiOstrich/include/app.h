@@ -59,8 +59,14 @@ void render_app(App* app);
  */
 void destroy_app(App* app);
 
+/**
+ * Set night mode.
+ */
 void set_night();
 
+/**
+ * Set day mode.
+ */
 void set_day();
 
 #endif /* APP_H */

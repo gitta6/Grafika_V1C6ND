@@ -23,7 +23,7 @@ typedef struct Scene
     GLuint desert_texture_id;
     bool showInstructions;
     bool showWinScene;
-    GLuint instructions_texture_id;     //HELP
+    GLuint instructions_texture_id; 
     bool spectateMode;
     YouWon youWon;
 } Scene;
@@ -54,10 +54,13 @@ void update_scene(Scene* scene);
 void render_scene(const Scene* scene);
 
 /*
-* Draw the objects.
+* Draw the desert.
 */
 void draw_desert(const Scene* scene);
 
+/*
+* Draw the ostrich.
+*/
 void draw_ostrich(const Scene* scene);
 
 /*
@@ -66,13 +69,8 @@ void draw_ostrich(const Scene* scene);
 void instructions(GLuint texture);
 
 /*
-void win_scene(GLuint texture);
+* Draw the "you won" object.
 */
-
-/*
-* Draw you_won.
-*/
-
 void draw_you_won(const Scene* scene);
 
 #endif /* SCENE_H */
