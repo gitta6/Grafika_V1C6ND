@@ -9,4 +9,5 @@ Használati útmutató az F1 megnyomásával jeleníthető meg.
 
 (A feladatban felhasznált többletfunkciók: köd, átlátszóság, éjszakai és nappali mód állíthatósága, spectate mode)
 
+Az assets jegyzék [itt](https://www.dropbox.com/scl/fo/ho64p1fnh4m5ktrpn5tl0/h?dl=0&rlkey=jgnxyuoleum1g0hfahzrdaf0o) megtalálható.
 
